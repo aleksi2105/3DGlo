@@ -4,11 +4,6 @@ const menu = () => {
   const closeBtn = menu.querySelector('.close-btn')
   const menuItems = menu.querySelectorAll('ul>li>a')
   const handleMenu = () => {
-    // if (!menu.style.transform) {
-    //   menu.style.transform = `translateX(0)`
-    // } else {
-    //   menu.style.transform = ``
-    // }
     menu.classList.toggle('active-menu')
   }
 
