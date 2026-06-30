@@ -16,7 +16,7 @@
   \**********************/
 (__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
 
-eval("{__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _modules_timer_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/timer.js */ \"./src/modules/timer.js\");\n/* harmony import */ var _modules_menu_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/menu.js */ \"./src/modules/menu.js\");\n/* harmony import */ var _modules_modal_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/modal.js */ \"./src/modules/modal.js\");\n/* harmony import */ var _modules_calculate_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./modules/calculate.js */ \"./src/modules/calculate.js\");\n\n\n\n\n\n(0,_modules_timer_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"])('25 may 2026')\n;(0,_modules_menu_js__WEBPACK_IMPORTED_MODULE_1__[\"default\"])()\n;(0,_modules_modal_js__WEBPACK_IMPORTED_MODULE_2__[\"default\"])()\n;(0,_modules_calculate_js__WEBPACK_IMPORTED_MODULE_3__[\"default\"])()\n\n//# sourceURL=webpack://3dglo/./src/index.js?\n}");
+eval("{__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _modules_timer_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/timer.js */ \"./src/modules/timer.js\");\n/* harmony import */ var _modules_menu_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/menu.js */ \"./src/modules/menu.js\");\n/* harmony import */ var _modules_modal_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/modal.js */ \"./src/modules/modal.js\");\n/* harmony import */ var _modules_calculate_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./modules/calculate.js */ \"./src/modules/calculate.js\");\n/* harmony import */ var _modules_forms_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./modules/forms.js */ \"./src/modules/forms.js\");\n\n\n\n\n\n\n(0,_modules_timer_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"])('25 may 2026')\n;(0,_modules_menu_js__WEBPACK_IMPORTED_MODULE_1__[\"default\"])()\n;(0,_modules_modal_js__WEBPACK_IMPORTED_MODULE_2__[\"default\"])()\n;(0,_modules_calculate_js__WEBPACK_IMPORTED_MODULE_3__[\"default\"])()\n;(0,_modules_forms_js__WEBPACK_IMPORTED_MODULE_4__[\"default\"])()\n\n//# sourceURL=webpack://3dglo/./src/index.js?\n}");
 
 /***/ },
 
@@ -27,6 +27,16 @@ eval("{__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _mo
 (__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
 
 eval("{__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\nconst calc = () => {\r\n  const squareInput = document.querySelector('.calc-square');\r\n  const countInput = document.querySelector('.calc-count');\r\n  const daysInput = document.querySelector('.calc-day');\r\n\r\n  const onlyNumbers = function (input) {\r\n    input.value = input.value.replace(/\\D/g, '')\r\n  }\r\n\r\n  squareInput.addEventListener('input', function () {\r\n    onlyNumbers(this)\r\n  })\r\n\r\n  countInput.addEventListener('input', function () {\r\n    onlyNumbers(this);\r\n  });\r\n\r\n  daysInput.addEventListener('input', function () {\r\n    onlyNumbers(this);\r\n  });\r\n}\r\n\r\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (calc);\n\n//# sourceURL=webpack://3dglo/./src/modules/calculate.js?\n}");
+
+/***/ },
+
+/***/ "./src/modules/forms.js"
+/*!******************************!*\
+  !*** ./src/modules/forms.js ***!
+  \******************************/
+(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
+
+eval("{__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\nconst forms = () => {\r\n  document.querySelectorAll('input[type=\"text\"]').forEach((input) => {\r\n\r\n    input.addEventListener('input', () => {\r\n      input.value = input.value.replace(/[^а-яА-ЯёЁ\\s-]/, '');\r\n    });\r\n  });\r\n\r\n  const message = document.getElementById('form2-message');\r\n  if (message) {\r\n    message.addEventListener('input', () => {\r\n      message.value = message.value.replace(/[^а-яА-ЯёЁ\\s-]/g, '');\r\n    });\r\n  }\r\n\r\n  document.querySelectorAll('input[type=\"email\"]').forEach((input) => {\r\n    input.addEventListener('input', () => {\r\n      input.value = input.value.replace(/[^A-Za-z0-9@\\-_\\.!~*']/g, '');\r\n    });\r\n  });\r\n\r\n  document.querySelectorAll('input[type=\"tel\"]').forEach((input) => {\r\n    input.addEventListener('input', () => {\r\n      input.value = input.value.replace(/[^0-9()\\-]/g, '');\r\n    });\r\n  });\r\n}\r\n\r\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (forms);\n\n//# sourceURL=webpack://3dglo/./src/modules/forms.js?\n}");
 
 /***/ },
 
