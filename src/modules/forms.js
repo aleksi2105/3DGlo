@@ -1,15 +1,16 @@
 const forms = () => {
+  const onlyRusText = /[^а-яА-ЯёЁ\s-]/g;
   document.querySelectorAll('input[type="text"]').forEach((input) => {
 
     input.addEventListener('input', () => {
-      input.value = input.value.replace(/[^а-яА-ЯёЁ\s-]/, '');
+      input.value = input.value.replace(onlyRusText, '');
     });
   });
 
   const message = document.getElementById('form2-message');
   if (message) {
     message.addEventListener('input', () => {
-      message.value = message.value.replace(/[^а-яА-ЯёЁ\s-]/g, '');
+      message.value = message.value.replace(onlyRusText, '');
     });
   }
 
