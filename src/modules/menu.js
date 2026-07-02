@@ -8,9 +8,23 @@ const menu = () => {
   }
 
   menuBtn.addEventListener('click', handleMenu)
-  closeBtn.addEventListener('click', handleMenu)
 
-  menuItems.forEach(menuItem => menuItem.addEventListener('click', handleMenu))
+  menu.addEventListener('click', (e) => {
+    const target = e.target
+
+    if (target.classList.contains('close-btn')) {
+      menu.classList.remove('active-menu')
+      return
+    }
+
+    if (target.tagName === 'A' && target.closest('ul')) {
+      menu.classList.remove('active-menu')
+    }
+  })
+
+  return {
+    toggle: handleMenu
+  }
 }
 
 export default menu
