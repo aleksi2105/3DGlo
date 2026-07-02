@@ -1,7 +1,6 @@
 const modal = () => {
   const modal = document.querySelector('.popup')
   const buttons = document.querySelectorAll('.popup-btn')
-  const closeBtn = modal.querySelector('.popup-close')
 
   function isMobile() {
     return window.innerWidth < 768;
@@ -97,7 +96,11 @@ const modal = () => {
     btn.addEventListener('click', openModal)
   })
 
-  closeBtn.addEventListener('click', closeModal)
+  modal.addEventListener('click', (e) => {
+    if (!e.target.closest('.popup-content') || e.target.classList.contains('popup-close')) {
+      closeModal()
+    }
+  })
 
 }
 
