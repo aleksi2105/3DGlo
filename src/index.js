@@ -4,6 +4,7 @@ import modal from "./modules/modal.js";
 import calc from "./modules/calculate.js";
 import forms from "./modules/forms.js";
 import tabs from "./modules/tabs.js";
+import slider from "./modules/slider.js";
 
 timer('25 may 2026')
 menu()
@@ -11,3 +12,4 @@ modal()
 calc()
 forms()
 tabs()
+slider()
