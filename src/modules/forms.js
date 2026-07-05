@@ -1,6 +1,6 @@
 const forms = () => {
   const onlyRusText = /[^а-яА-ЯёЁ\s-]/g;
-  document.querySelectorAll('input[type="text"]').forEach((input) => {
+  document.querySelectorAll('form-name').forEach((input) => {
 
     input.addEventListener('input', () => {
       input.value = input.value.replace(onlyRusText, '');
