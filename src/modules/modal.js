@@ -29,37 +29,29 @@ const modal = () => {
     modal.style.opacity = '0';
     modal.style.transform = 'scale(0.7) translateY(40px)';
 
-    requestAnimationFrame(() => {
-      let start = null;
-      const duration = 400;
+    function easing(t) {
+      const c1 = 1.70158;
+      const c3 = c1 + 1;
+      return 1 + c3 * Math.pow(t - 1, 3) + c1 * Math.pow(t - 1, 2);
+    }
 
-      function animate(time) {
-        if (!start) start = time;
-        const progress = Math.min((time - start) / duration, 1);
-
-        const c1 = 1.70158;
-        const c3 = c1 + 1;
-        const eased = 1 + c3 * Math.pow(progress - 1, 3) + c1 * Math.pow(progress - 1, 2);
-
+    animate({
+      duration: 400,
+      timing: easing,
+      draw: function (progress) {
         modal.style.opacity = Math.min(progress * 1.2, 1);
-
-        const scale = 0.7 + (1 - 0.7) * eased;
-        const translateY = 40 * (1 - eased);
+        const scale = 0.7 + (1 - 0.7) * progress;
+        const translateY = 40 * (1 - progress);
         modal.style.transform = `scale(${scale}) translateY(${translateY}px)`;
 
-        if (progress < 1) {
-          requestAnimationFrame(animate);
-        } else {
+        if (progress === 1) {
           modal.style.opacity = '1';
           modal.style.transform = 'scale(1) translateY(0)';
         }
       }
-      requestAnimationFrame(animate);
     });
   }
-
   function closeModal() {
-
     if (isMobile()) {
       modal.style.display = 'none';
       modal.style.opacity = '0';
@@ -68,30 +60,28 @@ const modal = () => {
       return;
     }
 
-    let start = null;
-    const duration = 300;
-
-    function animate(time) {
-      if (!start) start = time;
-      const progress = Math.min((time - start) / duration, 1);
-
-      const eased = progress * progress * progress;
-
-      modal.style.opacity = 1 - eased;
-      const scale = 1 - (1 - 0.8) * eased;
-      const translateY = 30 * eased;
-      modal.style.transform = `scale(${scale}) translateY(${translateY}px)`;
-
-      if (progress < 1) {
-        requestAnimationFrame(animate);
-      } else {
-        modal.style.display = 'none';
-        modal.style.opacity = '0';
-        modal.style.transform = 'scale(0.7) translateY(40px)';
-        toggleScroll(false);
-      }
+    function easing(t) {
+      return t * t * t;
     }
-    requestAnimationFrame(animate);
+
+    animate({
+      duration: 300,
+      timing: easing,
+      draw: function (progress) {
+        modal.style.opacity = 1 - progress;
+        const scale = 1 - (1 - 0.8) * progress;
+        const translateY = 30 * progress;
+
+        modal.style.transform = `scale(${scale}) translateY(${translateY}px)`;
+
+        if (progress === 1) {
+          modal.style.display = 'none';
+          modal.style.opacity = '0';
+          modal.style.transform = 'scale(0.7) translateY(40px)';
+          toggleScroll(false);
+        }
+      }
+    });
   }
 
   buttons.forEach(btn => {
