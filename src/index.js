@@ -5,6 +5,7 @@ import calc from "./modules/calc.js";
 import forms from "./modules/forms.js";
 import tabs from "./modules/tabs.js";
 import slider from "./modules/slider.js";
+import sendForm from "./modules/sendForm.js";
 
 timer('25 may 2026')
 menu()
@@ -13,3 +14,12 @@ calc(100)
 forms()
 tabs()
 slider()
+sendForm({
+  formId: 'form1',
+  someElem: [
+    {
+      type: 'block',
+      id: 'total'
+    }
+  ]
+})
