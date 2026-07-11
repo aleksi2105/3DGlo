@@ -1,11 +1,17 @@
 const forms = () => {
   const onlyRusText = /[^а-яА-ЯёЁ\s-]/g;
-  document.querySelectorAll('form-name').forEach((input) => {
+  document.querySelectorAll('.form-name').forEach((input) => {
 
     input.addEventListener('input', () => {
       input.value = input.value.replace(onlyRusText, '');
     });
   });
+
+  const form2Name = document.getElementById('form2-name')
+
+  form2Name.addEventListener('input', () => {
+    form2Name.value = form2Name.value.replace(onlyRusText, '')
+  })
 
   const message = document.getElementById('form2-message');
   if (message) {
