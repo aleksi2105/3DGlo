@@ -5,16 +5,22 @@ const sendForm = ({ formId, someElem = [] }) => {
   const errorText = 'Ошибка!!!'
   const successText = 'Спасибо! Наш менеджер с Вами свяжется.'
 
-  const validate = (list) => {
+  const validate = (form) => {
+    const phone = form.querySelector('[name="user_phone"]')
+    const name = form.querySelector('[name="user_name"]')
+    const message = form.querySelector('[name="user_message"]')
+
+    const phoneReg = /^[+()\d-]+$/
+    const nameReg = /^[А-Яа-яЁё\s]+$/
+    const messageReg = /^[А-Яа-яЁё0-9\s.,!?:;"'«»()\-\n]+$/
+
     let success = true
 
-    // list.forEach(input => {
-    //   if (!input.classList.contains('success')) {
-    //     success = false
-    //   }
-    // })
-    return success
+    if (phone && phone.value && !phoneReg.test(phone.value)) success = false
+    if (name && name.value && !nameReg.test(name.value)) success = false
+    if (message && message.value && !messageReg.test(message.value)) success = false
 
+    return success
   }
 
   const sendData = (data) => {
@@ -28,7 +34,7 @@ const sendForm = ({ formId, someElem = [] }) => {
   }
 
   const submitForm = () => {
-    const formElements = form.querySelectorAll('input')
+    const formElements = form.querySelectorAll('input, textarea')
     const formData = new FormData(form)
     const formBody = {}
 
@@ -48,7 +54,7 @@ const sendForm = ({ formId, someElem = [] }) => {
       }
     })
 
-    if (validate(formElements)) {
+    if (validate(form)) {
       sendData(formBody)
         .then(data => {
           statusBlock.textContent = successText
